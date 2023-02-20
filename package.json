@@ -1,7 +1,7 @@
 {
   "name": "weather-webapp",
   "version": "0.1.0",
-  "homepage": "https://ridvan-okovic.github.io/weather-webapp/",
+  "homepage": "https://ridvan-okovic.github.io/weather-webapp",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
