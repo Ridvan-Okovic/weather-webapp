@@ -67,7 +67,7 @@ const WeatherInput = (props) => {
   return (
     <form
       onSubmit={formSubmitHandler}
-      className="w-[40%] m-auto my-8 flex justify-evenly"
+      className="sm:w-[60%] md:w-[40%] m-auto my-8 flex justify-evenly"
     >
       <input
         onChange={nameChangeHandler}
