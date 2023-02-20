@@ -6,7 +6,7 @@ const MainSection = (props) => {
 
   return (
     <div className="max-w-[80%] font-segoe max-h-[20rem] mx-auto my-20 px-4 bg-gray-50 shadow-lg rounded-2xl py-8">
-      <h2 className=" mb-4 text-center font-segoe text-3xl text-gray-400">
+      <h2 className=" mb-4 text-center font-segoe text-3xl font-bold text-gray-400">
         {props.cityDetails.name}, {props.cityDetails.state}
       </h2>
 

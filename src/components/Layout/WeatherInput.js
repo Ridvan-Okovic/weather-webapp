@@ -3,7 +3,6 @@ import { FaSearch } from 'react-icons/fa';
 
 const WeatherInput = (props) => {
   const [name, setName] = useState('');
-  const API_KEY = '930928cdfa2f8537673057aeadaa0e06';
 
   const nameChangeHandler = (event) => {
     setName(event.target.value);
@@ -11,7 +10,7 @@ const WeatherInput = (props) => {
 
   async function fetchCoordinates() {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=${API_KEY}`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=930928cdfa2f8537673057aeadaa0e06`
     );
 
     const data = await response.json();
@@ -28,7 +27,7 @@ const WeatherInput = (props) => {
 
   async function fetchForecast(latitude, longitude) {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=930928cdfa2f8537673057aeadaa0e06`
     );
 
     if (response.ok) {
