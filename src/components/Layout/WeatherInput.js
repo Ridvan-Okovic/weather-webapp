@@ -16,7 +16,7 @@ const WeatherInput = (props) => {
 
   async function fetchCoordinates() {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=930928cdfa2f8537673057aeadaa0e06`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=930928cdfa2f8537673057aeadaa0e06`
     );
 
     const data = await response.json();
