@@ -16,7 +16,7 @@ const WeatherInput = (props) => {
 
   async function fetchCoordinates() {
     const response = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=930928cdfa2f8537673057aeadaa0e06`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=930928cdfa2f8537673057aeadaa0e06`
     );
 
     const data = await response.json();
@@ -49,6 +49,7 @@ const WeatherInput = (props) => {
       });
 
       props.setWeather(transformedWeather[0]);
+
       props.setWind(data.wind);
       props.setIsResponseOk(true);
     }
