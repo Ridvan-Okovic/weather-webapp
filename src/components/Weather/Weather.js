@@ -34,7 +34,7 @@ const Weather = (props) => {
       </h2>
 
       <div className="flex flex-row justify-evenly flex-wrap">
-        <div className="sm:w-[80%] sm:mb-8 lg:w-[30%] px-10 border shadow-lg rounded-md cursor-default py-4 flex flex-col items-center justify-evenly font-bold hover:scale-105 transition-all duration-300">
+        <div className="sm:w-[85%] sm:mb-8 lg:w-[30%] px-10 border shadow-lg rounded-md cursor-default py-4 flex flex-col items-center justify-evenly font-bold hover:scale-105 transition-all duration-300">
           <label className="text-2xl font-bold text-teal-400 text-center">
             Temperature:
           </label>
@@ -52,7 +52,7 @@ const Weather = (props) => {
           </div>
         </div>
 
-        <div className="sm:w-[80%] justify-evenly sm:mb-8 lg:w-[30%]  bg-slate-200 opacity-90 shadow-lg rounded-md py-4 cursor-default flex flex-col items-center font-bold hover:scale-105 transition-all duration-300">
+        <div className="sm:w-[85%] justify-evenly sm:mb-8 lg:w-[30%]  bg-slate-200 opacity-90 shadow-lg rounded-md py-4 cursor-default flex flex-col items-center font-bold hover:scale-105 transition-all duration-300">
           <label className="text-2xl font-bold text-teal-500 text-center">
             Weather:
           </label>
@@ -73,7 +73,7 @@ const Weather = (props) => {
           </div>
         </div>
 
-        <div className="sm:w-[80%] justify-evenly sm:mb-8 lg:w-[30%] border shadow-lg py-4 rounded-md cursor-default flex flex-col items-center hover:scale-105 font-bold transition-all duration-300">
+        <div className="sm:w-[85%] justify-evenly sm:mb-8 lg:w-[30%] border shadow-lg py-4 rounded-md cursor-default flex flex-col items-center hover:scale-105 font-bold transition-all duration-300">
           <label className="text-2xl font-bold text-teal-400 text-center">
             Wind:
           </label>

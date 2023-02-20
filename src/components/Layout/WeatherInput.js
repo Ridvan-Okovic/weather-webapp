@@ -71,7 +71,7 @@ const WeatherInput = (props) => {
     >
       <input
         onChange={nameChangeHandler}
-        className="outline-none bg-transparent border-b-2 border-gray-300 font-segoe py-2  mr-8 w-full h-full text-xl bg-whit active:outline-2 text-teal-300 focus:border-teal-300 hover:border-teal-400 transition-colors duration-500"
+        className="outline-none rounded-none bg-transparent border-b-2 border-gray-300 font-segoe py-2  mr-8 w-full h-full text-xl bg-whit active:outline-2 text-teal-300 focus:border-teal-300 hover:border-teal-400 transition-colors duration-500"
         type="text"
         placeholder="Enter a city."
         value={name}
