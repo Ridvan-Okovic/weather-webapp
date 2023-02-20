@@ -4,6 +4,12 @@ import { FaSearch } from 'react-icons/fa';
 const WeatherInput = (props) => {
   const [name, setName] = useState('');
 
+  let formIsValid = false;
+
+  if (name.trim() !== '') {
+    formIsValid = true;
+  }
+
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };
@@ -38,19 +44,22 @@ const WeatherInput = (props) => {
         return {
           main: weatherData.main,
           description: weatherData.description,
+          icon: weatherData.icon,
         };
       });
 
       props.setWeather(transformedWeather[0]);
-
       props.setWind(data.wind);
+      props.setIsResponseOk(true);
     }
   }
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
+    if (name.trim() === '') {
+      return;
+    }
     fetchCoordinates();
-    props.setIsResponseOk(true);
     setName('');
   };
 
@@ -67,8 +76,9 @@ const WeatherInput = (props) => {
         value={name}
       />
       <button
+        disabled={!formIsValid}
         type="submit"
-        className="bg-teal-300 border-2 border-teal-300 px-4 py-2 rounded-xl hover:bg-opacity-50 focus:border-teal-300 transition-all duration-300"
+        className="bg-teal-300 disabled:cursor-not-allowed disabled:opacity-75 disabled:bg-gray-400 disabled:text-gray-800 disabled:border-gray-500 border-2 border-teal-300 px-4 py-2 rounded-xl hover:bg-opacity-50 focus:border-teal-300 transition-all duration-300"
       >
         <FaSearch />
       </button>
