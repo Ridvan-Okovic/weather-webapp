@@ -1,8 +1,12 @@
 import React from 'react';
+import { FaArrowUp } from 'react-icons/fa';
 
 const MainSection = (props) => {
   const actual = (props.temperature.temp - 273.15).toFixed(0);
   const feelsLike = (props.temperature.feels_like - 273.15).toFixed(0);
+  const deg = props.wind.deg + 'deg';
+
+  const rotateClass = `flex flex-row text-xl text-gray-400 rotate-[${deg}]`;
 
   return (
     <div className="max-w-[80%] font-segoe max-h-[20rem] mx-auto my-20 px-4 bg-gray-50 shadow-lg rounded-2xl py-8">
@@ -55,11 +59,8 @@ const MainSection = (props) => {
           <label className="text-2xl font-bold text-teal-400 text-center">
             Wind:
           </label>
-          <div className=" flex flex-row text-lg text-gray-400">
-            <h2 className="mr-2">Direction:</h2>
-            <p>
-              <span className="text-xl text-teal-400">{props.wind.deg}°</span>
-            </p>
+          <div className={rotateClass}>
+            <FaArrowUp />
           </div>
           <div className="flex text-lg text-gray-400 items-start">
             <h2 className="mr-2">Speed:</h2>
