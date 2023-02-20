@@ -1,6 +1,7 @@
 const NavBar = (props) => {
   const searchBarHandler = () => {
     props.setIsSearchOpen((prev) => !prev);
+    props.setIsResponseOk(false);
   };
 
   return (

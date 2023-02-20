@@ -15,7 +15,6 @@ const WeatherInput = (props) => {
     );
 
     const data = await response.json();
-    console.log(data);
 
     const cityDetails = { name: data[0].name, state: data[0].country };
 
@@ -32,14 +31,27 @@ const WeatherInput = (props) => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
     );
 
-    const data = await response.json();
-    console.log(data);
-    props.setTemperature(data.main);
+    if (response.ok) {
+      const data = await response.json();
+      props.setTemperature(data.main);
+
+      const transformedWeather = data.weather.map((weatherData) => {
+        return {
+          main: weatherData.main,
+          description: weatherData.description,
+        };
+      });
+
+      props.setWeather(transformedWeather[0]);
+
+      props.setWind(data.wind);
+    }
   }
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
     fetchCoordinates();
+    props.setIsResponseOk(true);
     setName('');
   };
 
