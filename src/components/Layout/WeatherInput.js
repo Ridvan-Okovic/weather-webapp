@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 const WeatherInput = (props) => {
   const [name, setName] = useState('');
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   let inputClass =
     'outline-none rounded-none bg-transparent border-b-2 border-gray-300 font-segoe py-2  mr-8 w-full h-full text-xl active:outline-2 text-teal-300 focus:border-teal-300 hover:border-teal-400 transition-colors duration-500';
@@ -47,6 +48,7 @@ const WeatherInput = (props) => {
   }
 
   async function fetchForecast(latitude, longitude) {
+    setIsLoading(true);
     setError(false);
 
     try {
@@ -75,6 +77,7 @@ const WeatherInput = (props) => {
     } catch (error) {
       setError(error.message);
     }
+    setIsLoading(false);
   }
 
   const formSubmitHandler = (event) => {
@@ -113,9 +116,15 @@ const WeatherInput = (props) => {
         </button>
       </form>
 
-      {error && !formIsValid && (
+      {error && !formIsValid && !isLoading && (
         <p className="text-2xl text-gray-400 text-center font-segoe">
           Wrong input. Please try another city.
+        </p>
+      )}
+
+      {isLoading && (
+        <p className="text-2xl text-gray-400 text-center font-segoe">
+          Loading forecast information...
         </p>
       )}
     </>
