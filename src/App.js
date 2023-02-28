@@ -9,7 +9,7 @@ const App = () => {
   const [weather, setWeather] = useState([]);
   const [temperature, setTemperature] = useState([]);
   const [cityDetails, setCityDetails] = useState('');
-  const [responseOk, setIsResponseOk] = useState(false);
+  const [responseOk, setIsResponseOk] = useState();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
@@ -27,8 +27,10 @@ const App = () => {
           setIsResponseOk={setIsResponseOk}
         />
       )}
+
       {responseOk && (
         <MainSection
+          responseOk={responseOk}
           wind={wind}
           weather={weather}
           cityDetails={cityDetails}
