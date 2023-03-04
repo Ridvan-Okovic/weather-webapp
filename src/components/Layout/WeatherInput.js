@@ -91,7 +91,7 @@ const WeatherInput = (props) => {
 
   if (error && !formIsValid) {
     inputClass =
-      'bg-red-300 rounded-t-lg outline-none border-b-2 placeholder:text-transparent border-red-500 font-segoe py-2 mr-8 w-full h-full text-xl';
+      'bg-red-300 outline-none border-b-2 placeholder:text-transparent border-red-500 font-segoe py-2 mr-8 w-full h-full text-xl';
   }
 
   return (
