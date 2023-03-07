@@ -12,6 +12,9 @@ const App = () => {
   const [responseOk, setIsResponseOk] = useState();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+
   return (
     <>
       <NavBar
@@ -20,6 +23,9 @@ const App = () => {
       />
       {isSearchOpen && (
         <WeatherInput
+          setLatitude={setLatitude}
+          setLongitude={setLongitude}
+          // -------------------------- //
           setWeather={setWeather}
           setWind={setWind}
           setTemperature={setTemperature}
@@ -30,6 +36,8 @@ const App = () => {
 
       {responseOk && (
         <MainSection
+          latitude={latitude}
+          longitude={longitude}
           responseOk={responseOk}
           wind={wind}
           weather={weather}

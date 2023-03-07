@@ -6,6 +6,8 @@ const Weather = (props) => {
   const feelsLike = (props.temperature.feels_like - 273.15).toFixed(0);
   const deg = props.wind.deg;
 
+  const URL = `api.openweathermap.org/data/2.5/forecast/daily?lat=${props.lat}&lon=${props.lon}&appid=930928cdfa2f8537673057aeadaa0e06`;
+
   let rotateClass = 'text-teal-400 text-xl mb-1 ';
 
   if (deg === 0) {
@@ -27,6 +29,17 @@ const Weather = (props) => {
   } else if (deg > 270 && deg < 360) {
     rotateClass += 'rotate-[270deg]';
   }
+
+  async function fetchDetailedForecast() {
+    const response = await fetch(
+      `api.openweathermap.org/data/2.5/forecast/daily?lat=${props.lat}&lon=${props.lon}&appid=930928cdfa2f8537673057aeadaa0e06`
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+  }
+
   return (
     <div className="max-w-[70%] font-segoe max-h-[50rem] mx-auto my-20 px-4 bg-gray-50 shadow-lg rounded-2xl py-8">
       <h2 className=" mb-4 text-center font-segoe text-3xl font-bold text-gray-400 ">
@@ -91,6 +104,7 @@ const Weather = (props) => {
           </div>
         </div>
       </div>
+      <button onClick={fetchDetailedForecast}>Fetch detailed forcast</button>
     </div>
   );
 };

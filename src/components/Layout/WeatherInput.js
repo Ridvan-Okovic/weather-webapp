@@ -40,6 +40,8 @@ const WeatherInput = (props) => {
       const latitude = data[0].lat;
       const longitude = data[0].lon;
 
+      props.setLatitude(latitude);
+      props.setLongitude(longitude);
       fetchForecast(latitude, longitude);
     } catch (error) {
       props.setIsResponseOk(false);
