@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     screens: {
       sm: '375px',
-      md: '960px',
-      lg: '1440px',
+      md: '520px',
+      lg: '960px',
     },
     fontFamily: {
       mono: ['Helvetica'],

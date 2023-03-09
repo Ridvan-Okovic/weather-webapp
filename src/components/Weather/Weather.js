@@ -1,12 +1,19 @@
-import React from 'react';
-import { FaLocationArrow } from 'react-icons/fa';
+import { useCallback, useEffect, useState } from 'react';
+import { FaLocationArrow, FaCalendar, FaMapPin } from 'react-icons/fa';
+import DailyForecast from './DailyForecast';
 
 const Weather = (props) => {
+  const [dailyForecast, setDailyForecast] = useState([]);
   const actual = (props.temperature.temp - 273.15).toFixed(0);
   const feelsLike = (props.temperature.feels_like - 273.15).toFixed(0);
   const deg = props.wind.deg;
 
-  const URL = `api.openweathermap.org/data/2.5/forecast/daily?lat=${props.lat}&lon=${props.lon}&appid=930928cdfa2f8537673057aeadaa0e06`;
+  const today = new Date().toJSON().slice(0, 10);
+
+  const latitude = props.lat;
+  const longitude = props.lon;
+
+  const URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=930928cdfa2f8537673057aeadaa0e06`;
 
   let rotateClass = 'text-teal-400 text-xl mb-1 ';
 
@@ -30,20 +37,54 @@ const Weather = (props) => {
     rotateClass += 'rotate-[270deg]';
   }
 
-  async function fetchDetailedForecast() {
-    const response = await fetch(
-      `api.openweathermap.org/data/2.5/forecast/daily?lat=${props.lat}&lon=${props.lon}&appid=930928cdfa2f8537673057aeadaa0e06`
-    );
+  const fetchDetailedForecast = useCallback(async () => {
+    const response = await fetch(URL);
 
     const data = await response.json();
 
-    console.log(data);
-  }
+    const transformedData = data.list.filter((forecastData) => {
+      return forecastData.dt_txt.includes('12:00:00');
+    });
+
+    const finalForecast = transformedData.map((dailyData) => {
+      return {
+        date: dailyData.dt_txt.slice(0, 10),
+        temperature: dailyData.main.temp,
+        description: dailyData.weather[0].description,
+        icon: dailyData.weather[0].icon,
+      };
+    });
+
+    setDailyForecast(finalForecast);
+  }, [URL]);
+
+  useEffect(() => {
+    fetchDetailedForecast(latitude, longitude);
+  }, [latitude, longitude, fetchDetailedForecast]);
+
+  const daily = dailyForecast.map((forecastInfo, idx) => {
+    return (
+      <DailyForecast
+        key={idx}
+        date={forecastInfo.date}
+        temperature={forecastInfo.temperature.toFixed(0)}
+        description={forecastInfo.description}
+        icon={forecastInfo.icon}
+      />
+    );
+  });
 
   return (
-    <div className="max-w-[70%] font-segoe max-h-[50rem] mx-auto my-20 px-4 bg-gray-50 shadow-lg rounded-2xl py-8">
-      <h2 className=" mb-4 text-center font-segoe text-3xl font-bold text-gray-400 ">
-        {props.cityDetails.name}, {props.cityDetails.state}
+    <div className="max-w-[70%] font-segoe max-h-[200rem] mx-auto my-20 px-4 bg-gray-50 shadow-lg rounded-2xl py-8">
+      <h2 className=" sm:text-xs md:text-xl lg:text-3xl flex flex-row justify-between max-w-[90%] mx-auto mb-4 font-segoe text-3xl font-bold text-gray-400 ">
+        <p className="sm:gap-1 flex flex-row justify-center items-center md:gap-4">
+          <FaMapPin className="text-teal-400" />
+          {props.cityDetails.name}, {props.cityDetails.state}
+        </p>
+        <p className="sm:gap-1 flex flex-row justify-center items-center md:gap-4">
+          {today}
+          <FaCalendar className="text-teal-400" />
+        </p>
       </h2>
 
       <div className="flex flex-row justify-evenly flex-wrap">
@@ -103,8 +144,16 @@ const Weather = (props) => {
             </p>
           </div>
         </div>
+
+        <div className="w-full px-[5%]">
+          <p className="text-2xl font-bold text-teal-400 text-center">
+            Daily Forecast
+          </p>
+          <div className="flex flex-row flex-wrap items-center justify-evenly cursor-default">
+            {daily}
+          </div>
+        </div>
       </div>
-      <button onClick={fetchDetailedForecast}>Fetch detailed forcast</button>
     </div>
   );
 };
