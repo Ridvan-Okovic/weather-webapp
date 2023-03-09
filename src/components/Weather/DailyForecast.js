@@ -2,6 +2,7 @@ import React from 'react';
 import { FaCalendar, FaTemperatureHigh, FaInfoCircle } from 'react-icons/fa';
 
 const DailyForecast = (props) => {
+  // Added daily forecast
   return (
     <div className="border flex flex-col items-center shadow-lg p-4 w-[11rem] rounded-lg mt-4">
       <p className="w-full flex flex-row items-center justify-center gap-2 border-b mb-2">
