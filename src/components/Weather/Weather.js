@@ -37,6 +37,7 @@ const Weather = (props) => {
     rotateClass += 'rotate-[270deg]';
   }
 
+  // Added daily forecast data fetching
   const fetchDetailedForecast = useCallback(async () => {
     const response = await fetch(URL);
 
