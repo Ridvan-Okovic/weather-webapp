@@ -1,14 +1,14 @@
 import React from 'react';
 import { FaCalendar, FaTemperatureHigh, FaInfoCircle } from 'react-icons/fa';
+import DayDate from './DayDate';
 
 const DailyForecast = (props) => {
-  // Added daily forecast
   return (
-    <div className="border flex flex-col items-center shadow-lg p-4 w-[11rem] rounded-lg mt-4">
-      <p className="w-full flex flex-row items-center justify-center gap-2 border-b mb-2">
+    <div className="border flex flex-col items-center shadow-lg p-4 rounded-lg mt-4 font-segoe text-gray-400 font-bold sm:w-[90%] sm:mb-4 md:w-[60%] lg:w-[30%]">
+      <div className="w-full flex flex-row items-center justify-center gap-2 border-b mb-2">
         <FaCalendar className="text-teal-400" />
-        {props.date}
-      </p>
+        <DayDate datum={props.date} />
+      </div>
       <p className="w-full flex flex-row items-center justify-center gap-2 border-b mb-2">
         <FaTemperatureHigh className="text-teal-400" />
         {props.temperature} °C

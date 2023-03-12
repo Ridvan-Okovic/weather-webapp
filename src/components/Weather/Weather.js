@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FaLocationArrow, FaCalendar, FaMapPin } from 'react-icons/fa';
 import DailyForecast from './DailyForecast';
+import DayDate from './DayDate';
 
 const Weather = (props) => {
   const [dailyForecast, setDailyForecast] = useState([]);
@@ -8,7 +9,7 @@ const Weather = (props) => {
   const feelsLike = (props.temperature.feels_like - 273.15).toFixed(0);
   const deg = props.wind.deg;
 
-  const today = new Date().toJSON().slice(0, 10);
+  const today = new Date();
 
   const latitude = props.lat;
   const longitude = props.lon;
@@ -67,7 +68,7 @@ const Weather = (props) => {
     return (
       <DailyForecast
         key={idx}
-        date={forecastInfo.date}
+        date={new Date(forecastInfo.date)}
         temperature={forecastInfo.temperature.toFixed(0)}
         description={forecastInfo.description}
         icon={forecastInfo.icon}
@@ -77,15 +78,16 @@ const Weather = (props) => {
 
   return (
     <div className="max-w-[70%] font-segoe max-h-[200rem] mx-auto my-20 px-4 bg-gray-50 shadow-lg rounded-2xl py-8">
-      <h2 className=" sm:text-xs md:text-xl lg:text-3xl flex flex-row justify-between max-w-[90%] mx-auto mb-4 font-segoe text-3xl font-bold text-gray-400 ">
+      <h2 className="sm:text-sm md:text-xl lg:text-3xl flex flex-row justify-between max-w-[90%] mx-auto mb-4 font-segoe text-3xl font-bold text-gray-400 ">
         <p className="sm:gap-1 flex flex-row justify-center items-center md:gap-4">
           <FaMapPin className="text-teal-400" />
           {props.cityDetails.name}, {props.cityDetails.state}
         </p>
-        <p className="sm:gap-1 flex flex-row justify-center items-center md:gap-4">
-          {today}
+        <div className="sm:gap-1 flex flex-row justify-center items-center md:gap-4">
+          <DayDate datum={today} />
+
           <FaCalendar className="text-teal-400" />
-        </p>
+        </div>
       </h2>
 
       <div className="flex flex-row justify-evenly flex-wrap">
