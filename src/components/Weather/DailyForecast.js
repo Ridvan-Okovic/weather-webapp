@@ -13,7 +13,7 @@ const DailyForecast = (props) => {
         <FaTemperatureHigh className="text-teal-400" />
         {props.temperature} °C
       </p>
-      <p className="w-full flex flex-row items-center justify-center gap-2 border-b">
+      <p className="w-full flex flex-row uppercase items-center justify-center gap-2 border-b">
         <FaInfoCircle className="text-teal-400" />
         {props.description}
       </p>
