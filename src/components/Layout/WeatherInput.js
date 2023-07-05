@@ -24,7 +24,7 @@ const WeatherInput = (props) => {
 
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=930928cdfa2f8537673057aeadaa0e06`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${name}&limit=1&appid=${process.env.REACT_APP_API_KEY}`
       );
 
       if (!response.ok) {
@@ -55,7 +55,7 @@ const WeatherInput = (props) => {
 
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=930928cdfa2f8537673057aeadaa0e06`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_API_KEY}`
       );
 
       if (!response.ok) {
@@ -119,13 +119,13 @@ const WeatherInput = (props) => {
       </form>
 
       {error && !formIsValid && !isLoading && (
-        <p className="text-2xl text-gray-400 text-center font-segoe">
+        <p className="text-2xl text-[#e1e1e1] text-center font-segoe">
           Wrong input. Please try another city.
         </p>
       )}
 
       {isLoading && (
-        <p className="text-2xl text-gray-400 text-center font-segoe">
+        <p className="text-2xl text-[#e1e1e1] text-center font-segoe">
           Loading forecast information...
         </p>
       )}
