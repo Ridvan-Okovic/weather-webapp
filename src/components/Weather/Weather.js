@@ -77,8 +77,8 @@ const Weather = (props) => {
   });
 
   return (
-    <div className="max-w-[70%] font-segoe max-h-[200rem] mx-auto my-20 px-4 bg-gray-50 shadow-lg rounded-2xl py-8">
-      <h2 className="sm:text-sm md:text-xl lg:text-3xl flex flex-row justify-between max-w-[90%] mx-auto mb-4 font-segoe text-3xl font-bold text-gray-400 ">
+    <div className="max-w-[70%] font-segoe max-h-[200rem] mx-auto my-20 px-4 bg-zinc-800 shadow-lg rounded-2xl py-8">
+      <h2 className="sm:text-sm md:text-xl lg:text-3xl flex flex-row justify-between max-w-[90%] mx-auto mb-4 font-segoe text-3xl font-bold text-[#e1e1e1] ">
         <p className="sm:gap-1 flex flex-row justify-center items-center md:gap-4">
           <FaMapPin className="text-teal-400" />
           {props.cityDetails.name}, {props.cityDetails.state}
@@ -91,17 +91,17 @@ const Weather = (props) => {
       </h2>
 
       <div className="flex flex-row justify-evenly flex-wrap">
-        <div className="sm:w-[85%] sm:mb-8 lg:w-[30%] px-10 border shadow-lg rounded-md cursor-default py-4 flex flex-col items-center justify-evenly font-bold hover:scale-105 transition-all duration-300">
+        <div className="sm:w-[85%] sm:mb-8 lg:w-[30%] px-10 shadow-lg rounded-md cursor-default py-4 flex flex-col items-center justify-evenly font-bold  transition-all duration-300 bg-zinc-700">
           <label className="text-2xl font-bold text-teal-400 text-center">
             Temperature:
           </label>
-          <div className=" flex flex-row text-lg text-gray-400 items-baseline">
+          <div className=" flex flex-row text-lg text-[#e1e1e1] items-baseline">
             <h2 className="mr-2">Actual:</h2>
             <p>
               <span className="text-xl text-teal-400">{actual}°C</span>
             </p>
           </div>
-          <div className="flex text-lg text-gray-400 items-baseline">
+          <div className="flex text-lg text-[#e1e1e1] items-baseline">
             <h2 className="mr-2">Feels Like:</h2>
             <p>
               <span className="text-xl text-teal-400">{feelsLike}°C</span>
@@ -109,11 +109,11 @@ const Weather = (props) => {
           </div>
         </div>
 
-        <div className="sm:w-[85%] justify-evenly sm:mb-8 lg:w-[30%]  bg-slate-200 opacity-90 shadow-lg rounded-md py-4 cursor-default flex flex-col items-center font-bold hover:scale-105 transition-all duration-300">
+        <div className="sm:w-[85%] justify-evenly sm:mb-8 lg:w-[30%]  bg-zinc-700 shadow-lg rounded-md py-4 cursor-default flex flex-col items-center font-bold  transition-all duration-300">
           <label className="text-2xl font-bold text-teal-500 text-center">
             Weather:
           </label>
-          <div className=" flex flex-row text-lg text-gray-600 items-baseline">
+          <div className=" flex flex-row text-lg text-[#e1e1e1] items-baseline">
             <h2 className="mr-2">Description:</h2>
             <p>
               <span className="text-xl text-teal-500">
@@ -121,7 +121,7 @@ const Weather = (props) => {
               </span>
             </p>
           </div>
-          <div className="flex text-lg text-gray-600  items-center">
+          <div className="flex text-lg  items-center">
             <img
               className="h-[70px] p-0 m-0"
               src={`http://openweathermap.org/img/w/${props.weather.icon}.png`}
@@ -130,15 +130,15 @@ const Weather = (props) => {
           </div>
         </div>
 
-        <div className="sm:w-[85%] justify-evenly sm:mb-8 lg:w-[30%] border shadow-lg py-4 rounded-md cursor-default flex flex-col items-center hover:scale-105 font-bold transition-all duration-300">
+        <div className="sm:w-[85%] justify-evenly sm:mb-8 lg:w-[30%] shadow-lg py-4 rounded-md cursor-default flex flex-col items-center bg-zinc-700 font-bold transition-all duration-300">
           <label className="text-2xl font-bold text-teal-400 text-center">
             Wind:
           </label>
-          <div className="flex text-lg text-gray-400 items-end">
+          <div className="flex text-lg text-[#e1e1e1] items-end">
             <h2 className="mr-2">Direction:</h2>
             <FaLocationArrow className={rotateClass} />
           </div>
-          <div className="flex text-lg text-gray-400 items-baseline">
+          <div className="flex text-lg text-[#e1e1e1] items-baseline">
             <h2 className="mr-2">Speed:</h2>
             <p>
               <span className="text-xl text-teal-400">
@@ -148,7 +148,7 @@ const Weather = (props) => {
           </div>
         </div>
 
-        <div className="w-full px-[5%]">
+        <div className="w-full px-2 sm:px-6 md:px-4 lg:px-0 mt-2">
           <p className="text-2xl font-bold text-teal-400 text-center">
             Daily Forecast
           </p>

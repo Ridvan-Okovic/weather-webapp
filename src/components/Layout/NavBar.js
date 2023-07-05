@@ -7,7 +7,7 @@ const NavBar = (props) => {
   };
 
   return (
-    <header className="font-segoe px-[20%] flex items-center justify-between text-gray-100 w-full h-20 mt-4 bg-[#2f2f2f] shadow-xl">
+    <header className="font-segoe px-[20%] flex items-center justify-between text-[#e1e1e1] w-full h-20 mt-4 bg-zinc-800 shadow-xl">
       <h2 className="sm:text-lg md:text-3xl font-[500] underline">
         Weather App
       </h2>
