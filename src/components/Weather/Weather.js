@@ -148,11 +148,11 @@ const Weather = (props) => {
           </div>
         </div>
 
-        <div className="w-full px-2 sm:px-6 md:px-4 lg:px-0 mt-2">
+        <div className="w-full px-2 sm:px-6 md:px-8 mt-2">
           <p className="text-2xl font-bold text-teal-400 text-center">
             Daily Forecast
           </p>
-          <div className="flex flex-row flex-wrap items-center justify-evenly cursor-default">
+          <div className="flex gap-4 items-center justify-start cursor-default overflow-auto">
             {daily}
           </div>
         </div>
